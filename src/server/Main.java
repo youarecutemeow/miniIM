@@ -17,9 +17,9 @@ public class Main {
             Log.i("服务器已开启");
             while (true) {
                 Socket socket = serverSocket.accept();
-                Log.i("等待连接中...");
+                Log.i("连接建立中...");
                 InetAddress inetAddress = serverSocket.getInetAddress();
-                Log.i("客户端：" + inetAddress.getHostAddress() + " 已连接");
+                Log.i("客户端：" + inetAddress.getLocalHost() + " 已连接");
                 CommunicateThread communicateThread = new CommunicateThread(socket);
                 Thread thread = new Thread(communicateThread);
                 thread.start();
