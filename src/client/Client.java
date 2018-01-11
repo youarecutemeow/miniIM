@@ -18,7 +18,7 @@ public class Client {
         for(int i=0;i<1;i++){
             {
                 try {
-                    socket = new Socket("localhost",8001);
+                    socket = new Socket("155.94.177.38",8001);
                     outputStream = new ObjectOutputStream(socket.getOutputStream());
                     inputStream =  new ObjectInputStream(socket.getInputStream());
                     runnable = new CommunicateRunnable(inputStream);

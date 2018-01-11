@@ -14,8 +14,10 @@ public class Main {
         HashMap<String,CommunicateThread> communications = new HashMap<>();
         try {
             ServerSocket serverSocket = new ServerSocket(8001);
+            Log.i("服务器已开启");
             while (true) {
                 Socket socket = serverSocket.accept();
+                Log.i("等待连接中...");
                 InetAddress inetAddress = serverSocket.getInetAddress();
                 Log.i("客户端：" + inetAddress.getHostAddress() + " 已连接");
                 CommunicateThread communicateThread = new CommunicateThread(socket);
