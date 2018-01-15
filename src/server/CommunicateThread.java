@@ -1,11 +1,12 @@
 package server;
 
 import databases.Message;
+import log.Log;
 
 import java.io.*;
 import java.net.Socket;
 
-public class CommunicateThread implements Runnable {
+public class CommunicateThread extends Thread {
     private Socket socket;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
@@ -36,13 +37,16 @@ public class CommunicateThread implements Runnable {
             if(e instanceof EOFException){
                 System.out.println("over");
                 return;
+            } else{
+                e.printStackTrace();
             }
-            e.printStackTrace();
+
         } finally {
             try {
                 inputStream.close();
                 outputStream.close();
                 socket.close();
+                Log.i();
             } catch (IOException e) {
                 e.printStackTrace();
             }

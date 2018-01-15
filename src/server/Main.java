@@ -25,6 +25,7 @@ public class Main {
                 CommunicateThread communicateThread = new CommunicateThread(socket);
                 Thread thread = new Thread(communicateThread);
                 thread.start();
+                thread.interrupt();
                 communications.put(inetAddress.getHostAddress(),communicateThread);
             }
         } catch (IOException e) {
