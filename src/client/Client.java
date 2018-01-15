@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.Socket;
 
 public class Client {
@@ -18,7 +19,9 @@ public class Client {
         for(int i=0;i<1;i++){
             {
                 try {
-                    socket = new Socket("155.94.177.38",8001);
+                    socket = new Socket("localhost",8001);
+                    InetAddress inetAddress = socket.getInetAddress();
+                    System.out.println(socket.getLocalAddress().getHostAddress());
                     outputStream = new ObjectOutputStream(socket.getOutputStream());
                     inputStream =  new ObjectInputStream(socket.getInputStream());
                     runnable = new CommunicateRunnable(inputStream);
